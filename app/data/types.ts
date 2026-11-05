@@ -9,7 +9,8 @@ export type CategorySlug =
   | "video"
   | "audio"
   | "docs"
-  | "data";
+  | "data"
+  | "build";
 
 export type Pricing = "free" | "freemium" | "paid";
 export type Difficulty = "easy" | "medium" | "advanced";

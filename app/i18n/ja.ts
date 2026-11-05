@@ -30,6 +30,7 @@ const ja: typeof en = {
     audio: "音楽・音声",
     docs: "資料・プレゼン",
     data: "データ",
+    build: "Web・アプリ制作",
   },
   task: {
     heading: "おすすめのAIツール",

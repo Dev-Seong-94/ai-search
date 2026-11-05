@@ -30,6 +30,7 @@ const ko: typeof en = {
     audio: "음악·음성",
     docs: "문서·발표",
     data: "데이터",
+    build: "웹·앱 만들기",
   },
   task: {
     heading: "추천 AI 도구",

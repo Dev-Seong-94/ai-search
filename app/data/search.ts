@@ -16,7 +16,7 @@ export function searchTasks(items: SearchItem[], query: string): SearchItem[] {
 
   const words = normalized.split(/\s+/);
 
-  return items
+  const scored = items
     .map((item) => {
       const title = item.title.toLowerCase();
       const haystack = [title, ...item.terms];
@@ -29,6 +29,11 @@ export function searchTasks(items: SearchItem[], query: string): SearchItem[] {
       return { item, score: wordHits + termHits };
     })
     .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => b.score - a.score);
+
+  // Drops weak matches on a common word like "만들기" when a much better match exists.
+  const threshold = (scored[0]?.score ?? 0) / 2;
+  return scored
+    .filter(({ score }) => score >= threshold)
     .map(({ item }) => item);
 }

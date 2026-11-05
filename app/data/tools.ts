@@ -455,6 +455,103 @@ export const tools = {
     ),
     lastVerified: VERIFIED,
   },
+  lovable: {
+    name: "Lovable",
+    url: "https://lovable.dev",
+    pricing: "freemium",
+    freeTier: l(
+      "무료 요금제로 매일 크레딧 5개를 받아 만들고 공개할 수 있어요.",
+      "The free plan gives 5 build credits a day, and you can publish what you make.",
+      "無料プランでは毎日5クレジットが付与され、作成と公開ができます。",
+    ),
+    difficulty: "medium",
+    description: l(
+      "만들고 싶은 것을 글로 설명하면 웹사이트와 웹 앱을 만들어 주는 도구예요.",
+      "Builds websites and web apps from a written description.",
+      "作りたいものを文章で説明すると、ウェブサイトやウェブアプリを作るツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  v0: {
+    name: "v0",
+    url: "https://v0.app",
+    pricing: "freemium",
+    paidPlan: { name: "Plus", amount: 30, currency: "USD" },
+    freeTier: l(
+      "무료 요금제로 하루 메시지 7개까지 쓸 수 있어요.",
+      "The free plan allows 7 messages a day.",
+      "無料プランでは1日7メッセージまで使えます。",
+    ),
+    difficulty: "advanced",
+    description: l(
+      "프롬프트로 앱 화면을 만들고 Vercel에 배포할 수 있는 도구예요.",
+      "Generates app interfaces from prompts and deploys them to Vercel.",
+      "プロンプトからアプリ画面を作り、Vercelに公開できるツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  otter: {
+    name: "Otter",
+    url: "https://otter.ai",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 16.99, currency: "USD" },
+    freeTier: l(
+      "무료 요금제로 한 달 300분, 대화당 30분까지 기록할 수 있어요.",
+      "The free plan transcribes 300 minutes a month, up to 30 minutes per conversation.",
+      "無料プランでは月300分、1回の会話につき30分まで文字起こしできます。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "영어와 일본어 등을 지원하지만 공식 목록에 한국어는 없어요.",
+      "Supports English, Japanese, and others. Korean is not on the official list.",
+      "英語や日本語などに対応していますが、公式の一覧に韓国語はありません。",
+    ),
+    description: l(
+      "회의를 기록해 글로 옮기고 내용을 정리해 주는 도구예요.",
+      "Records meetings, turns them into text, and organizes what was said.",
+      "会議を記録して文字に起こし、内容を整理するツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  "clova-note": {
+    name: "CLOVA Note",
+    url: "https://clovanote.naver.com",
+    pricing: "freemium",
+    freeTier: l(
+      "개인용 무료 사용량은 공식 자료로 확인하지 못했어요. 앱에서 직접 확인해 주세요.",
+      "We could not confirm the free allowance for personal use. Check it in the app.",
+      "個人向けの無料利用量は公式資料で確認できませんでした。アプリでご確認ください。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어, 영어, 일본어, 중국어를 인식해요(네이버웍스 안내 기준).",
+      "Recognizes Korean, English, Japanese, and Chinese, per NAVER WORKS documentation.",
+      "韓国語、英語、日本語、中国語を認識します(NAVER WORKSの案内による)。",
+    ),
+    description: l(
+      "네이버가 만든 음성 기록 서비스로, 회의나 강의 녹음을 글로 옮기고 요약해 줘요.",
+      "NAVER's voice notes service, which transcribes and summarizes meetings and lectures.",
+      "NAVERの音声記録サービスで、会議や講義の録音を文字に起こして要約します。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  "google-flow": {
+    name: "Google Flow",
+    url: "https://flow.google.com",
+    pricing: "freemium",
+    freeTier: l(
+      "무료 크레딧이 있다는 안내와 유료 요금제에 포함된다는 안내가 함께 있어요. 로그인해서 확인해 보세요.",
+      "Google's pages differ on whether free credits are included, so sign in to check.",
+      "無料クレジットがあるという案内と有料プランに含まれるという案内があります。ログインしてご確認ください。",
+    ),
+    difficulty: "medium",
+    description: l(
+      "Google의 영상·이미지 제작 도구로, 글이나 이미지로 영상 장면을 만들 수 있어요.",
+      "Google's studio for video and images, which creates scenes from text or images.",
+      "Googleの動画・画像制作ツールで、テキストや画像から動画のシーンを作れます。",
+    ),
+    lastVerified: VERIFIED,
+  },
 } satisfies Record<string, Tool>;
 
 export type ToolSlug = keyof typeof tools;

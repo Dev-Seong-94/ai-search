@@ -28,6 +28,7 @@ const en = {
     audio: "Music & Voice",
     docs: "Docs & Presentations",
     data: "Data",
+    build: "Websites & Apps",
   },
   task: {
     heading: "Recommended AI tools",

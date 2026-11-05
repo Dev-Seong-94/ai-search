@@ -50,7 +50,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <h2 className="text-xl font-bold text-neutral-900 mb-4">
           {dict.categories.title}
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
           {categories.map((category) => (
             <CategoryCard
               key={category.slug}
@@ -69,8 +69,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           id={category.slug}
           className="py-6 scroll-mt-24"
         >
-          <h2 className="text-lg font-bold text-neutral-900 mb-3">
-            <span aria-hidden="true">{category.icon}</span>{" "}
+          <h2 className="flex items-center gap-2 text-lg font-bold text-neutral-900 mb-3">
+            <span aria-hidden="true">{category.icon}</span>
             {dict.categories[category.slug]}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

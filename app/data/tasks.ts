@@ -26,6 +26,7 @@ export const categories: {
   { slug: "audio", icon: "🎵", color: "tertiary" },
   { slug: "docs", icon: "📑", color: "primary" },
   { slug: "data", icon: "📊", color: "secondary" },
+  { slug: "build", icon: "🌐", color: "tertiary" },
 ];
 
 function l<T>(ko: T, en: T, ja: T): Localized<T> {
@@ -164,6 +165,14 @@ export const tasks: Task[] = [
     ),
     picks: [
       {
+        tool: "chatgpt",
+        reason: l(
+          "대화하듯 말로 고쳐가며 만들 수 있어요. 무료 요금제는 사용량이 제한돼요.",
+          "Refine the image by talking to it. The free plan has limited use.",
+          "会話しながら画像を修正できます。無料プランでは利用量に制限があります。",
+        ),
+      },
+      {
         tool: "firefly",
         reason: l(
           "무료로 매일 조금씩 써볼 수 있어서 처음 시작하기 좋아요.",
@@ -177,14 +186,6 @@ export const tasks: Task[] = [
           "무료 체험은 없지만 분위기와 작품성이 중요할 때 고려해 보세요.",
           "No free trial, but worth considering when mood and artistry matter most.",
           "無料トライアルはありませんが、雰囲気や作品性を重視するなら検討できます。",
-        ),
-      },
-      {
-        tool: "ideogram",
-        reason: l(
-          "포스터처럼 이미지에 글자를 넣어야 할 때 좋아요.",
-          "Works well when the image needs text, like a poster.",
-          "ポスターのように文字を入れたい画像に向いています。",
         ),
       },
     ],
@@ -269,6 +270,14 @@ export const tasks: Task[] = [
           "글이나 이미지로 영상 장면을 직접 생성해 볼 수 있어요.",
           "Lets you generate video scenes directly from text or images.",
           "テキストや画像から動画のシーンを直接生成できます。",
+        ),
+      },
+      {
+        tool: "google-flow",
+        reason: l(
+          "Google의 영상 생성 도구예요. 쓸 수 있는 범위는 로그인해서 확인해 보세요.",
+          "Google's video generation tool. Sign in to see what your account includes.",
+          "Googleの動画生成ツールです。利用できる範囲はログインしてご確認ください。",
         ),
       },
       {
@@ -493,6 +502,126 @@ export const tasks: Task[] = [
           "Excel 안에서 바로 작업하고 싶고 Microsoft 365를 구독 중이라면 좋아요.",
           "Works if you want to stay inside Excel and subscribe to Microsoft 365.",
           "Excelの中で作業したく、Microsoft 365を契約しているなら便利です。",
+        ),
+      },
+    ],
+  },
+  {
+    slug: "write-resume",
+    category: "writing",
+    title: l("이력서·자기소개서 쓰기", "Write a resume or cover letter", "履歴書・職務経歴書を書く"),
+    keywords: l(
+      ["이력서", "자기소개서", "자소서", "취업", "이직", "면접"],
+      ["resume", "cv", "cover letter", "job", "interview"],
+      ["履歴書", "職務経歴書", "自己PR", "就職", "転職", "面接"],
+    ),
+    picks: [
+      {
+        tool: "chatgpt",
+        reason: l(
+          "내 경험을 적어주면 지원 공고에 맞춰 초안을 잡아줘요. 사실인지는 꼭 직접 확인하세요.",
+          "Share your experience and it drafts to fit the job posting. Always check the facts yourself.",
+          "経験を伝えると求人に合わせて下書きを作ります。内容が事実かは必ずご自身で確認してください。",
+        ),
+      },
+      {
+        tool: "claude",
+        reason: l(
+          "이미 쓴 글을 올려서 어색한 문장을 고치고 피드백을 받기 좋아요.",
+          "Good for pasting in what you wrote and getting feedback and sentence fixes.",
+          "書いた文章を貼り付けて、不自然な表現の修正やフィードバックを受けるのに向いています。",
+        ),
+      },
+    ],
+  },
+  {
+    slug: "translate-video",
+    category: "video",
+    title: l("영상을 다른 언어로 번역하기", "Translate a video into another language", "動画を他の言語に翻訳する"),
+    keywords: l(
+      ["영상 번역", "번역", "더빙", "외국어 자막", "해외"],
+      ["translate", "video translation", "dubbing", "foreign", "subtitles"],
+      ["動画翻訳", "翻訳", "吹き替え", "外国語", "字幕", "海外"],
+    ),
+    picks: [
+      {
+        tool: "heygen",
+        reason: l(
+          "목소리까지 다른 언어로 바꿔 주는 영상 번역을 지원해요.",
+          "Its video translation changes the spoken audio, not just the text.",
+          "音声まで他の言語に変える動画翻訳に対応しています。",
+        ),
+      },
+      {
+        tool: "vrew",
+        reason: l(
+          "자막만 번역해도 충분할 때 좋아요. 100개가 넘는 언어로 번역할 수 있어요.",
+          "A good fit when translated subtitles are enough, with over 100 languages.",
+          "字幕の翻訳だけで十分なときに向いています。100以上の言語に翻訳できます。",
+        ),
+      },
+    ],
+  },
+  {
+    slug: "meeting-notes",
+    category: "docs",
+    title: l("회의 내용 기록·요약하기", "Record and summarize meetings", "会議を記録して要約する"),
+    keywords: l(
+      ["회의", "회의록", "녹음", "받아쓰기", "강의", "음성 기록", "요약"],
+      ["meeting", "notes", "minutes", "transcribe", "recording", "lecture"],
+      ["会議", "議事録", "録音", "文字起こし", "講義"],
+    ),
+    picks: [
+      {
+        tool: "clova-note",
+        reason: l(
+          "한국어 회의라면 먼저 써볼 만해요. 네이버가 만든 서비스예요.",
+          "Worth trying first for meetings in Korean. It is made by NAVER.",
+          "韓国語の会議ならまず試す価値があります。NAVERのサービスです。",
+        ),
+      },
+      {
+        tool: "otter",
+        reason: l(
+          "영어나 일본어 회의에 좋아요. 공식 지원 목록에 한국어는 없어요.",
+          "Good for meetings in English or Japanese. Korean is not officially listed.",
+          "英語や日本語の会議に向いています。公式の対応一覧に韓国語はありません。",
+        ),
+      },
+    ],
+  },
+  {
+    slug: "build-website",
+    category: "build",
+    title: l("코딩 없이 웹사이트 만들기", "Build a website without coding", "コーディングなしでウェブサイトを作る"),
+    keywords: l(
+      ["웹사이트", "홈페이지", "랜딩페이지", "앱", "웹 앱", "코딩", "노코드"],
+      ["website", "landing page", "web app", "app", "coding", "no code", "homepage"],
+      ["ウェブサイト", "ホームページ", "ランディングページ", "アプリ", "コーディング", "ノーコード"],
+    ),
+    picks: [
+      {
+        tool: "lovable",
+        reason: l(
+          "로그인이나 저장 기능이 필요한 서비스까지 글로 설명해서 만들어 볼 수 있어요.",
+          "Describe it in words and try building even a service that needs logins and saved data.",
+          "ログインや保存機能が必要なサービスも、文章で説明して作ってみられます。",
+        ),
+      },
+      {
+        tool: "canva",
+        reason: l(
+          "가게나 행사 소개처럼 단순한 페이지는 템플릿으로 가장 쉽게 만들 수 있어요.",
+          "The easiest route for a simple page, like a shop or event, using templates.",
+          "お店やイベントの紹介など、シンプルなページならテンプレートで最も手軽に作れます。",
+        ),
+      },
+      {
+        tool: "v0",
+        reason: l(
+          "개발을 조금 안다면 화면을 만들어 코드까지 이어서 다루기 좋아요.",
+          "If you know some development, it lets you continue from the interface into the code.",
+          "開発の知識が少しあるなら、画面作成からコードの作業まで続けられます。",
         ),
       },
     ],
