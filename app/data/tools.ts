@@ -1,0 +1,466 @@
+import type { Localized, Tool } from "./types";
+
+const VERIFIED = "2026-11-05";
+
+function l(ko: string, en: string, ja: string): Localized {
+  return { ko, en, ja };
+}
+
+export const tools = {
+  claude: {
+    name: "Claude",
+    url: "https://claude.com",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 20, currency: "USD" },
+    freeTier: l("무료 요금제가 있어요.", "Has a free plan.", "無料プランがあります。"),
+    difficulty: "easy",
+    description: l(
+      "대화하듯 요청하면 글쓰기, 요약, 아이디어 정리를 도와주는 AI 비서예요.",
+      "An AI assistant you talk to for writing, summarizing, and working through ideas.",
+      "会話するように頼むだけで、文章作成や要約、アイデア整理を手伝うAIアシスタントです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  chatgpt: {
+    name: "ChatGPT",
+    url: "https://chatgpt.com",
+    pricing: "freemium",
+    paidPlan: { name: "Plus", amount: 20, currency: "USD" },
+    freeTier: l("무료 요금제가 있어요.", "Has a free plan.", "無料プランがあります。"),
+    difficulty: "easy",
+    description: l(
+      "글쓰기, 질문, 파일 분석까지 폭넓게 쓸 수 있는 대화형 AI예요.",
+      "A conversational AI for a wide range of jobs, from writing and questions to working with files.",
+      "文章作成や質問、ファイルの分析まで幅広く使える対話型AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  gemini: {
+    name: "Gemini",
+    url: "https://gemini.google.com",
+    pricing: "freemium",
+    paidPlan: { name: "Google AI Plus", amount: 7500, currency: "KRW" },
+    freeTier: l(
+      "Google 계정으로 무료로 쓸 수 있어요.",
+      "Free with a Google account.",
+      "Googleアカウントで無料で使えます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "Google이 만든 AI 비서로, 질문과 자료 조사에 쓰기 좋아요.",
+      "Google's AI assistant, handy for questions and looking things up.",
+      "Googleが提供するAIアシスタントで、質問や調べものに向いています。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  perplexity: {
+    name: "Perplexity",
+    url: "https://www.perplexity.ai",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 20, currency: "USD" },
+    freeTier: l(
+      "무료 요금제가 있고 하루 사용량에 제한이 있어요.",
+      "Has a free plan with daily limits.",
+      "無料プランがあり、1日の利用量に制限があります。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "질문하면 웹을 찾아 출처와 함께 답해주는 AI 검색 서비스예요.",
+      "An AI search service that looks across the web and answers with its sources.",
+      "質問するとウェブを調べ、出典付きで答えてくれるAI検索サービスです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  wrtn: {
+    name: "뤼튼 (Wrtn)",
+    url: "https://wrtn.ai",
+    pricing: "freemium",
+    freeTier: l(
+      "무료로 이용할 수 있다고 안내하지만, 일부 기능은 유료로 바뀔 수 있다고 약관에 적혀 있어요.",
+      "Advertised as free to use, though its terms say parts of the service may become paid.",
+      "無料で使えると案内されていますが、規約には一部が有料になる可能性があると記載されています。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "한국 기업이 만든 AI 서비스로, 대화와 글쓰기에 쓸 수 있어요.",
+      "An AI service from a Korean company, used for chat and writing.",
+      "韓国企業が提供するAIサービスで、会話や文章作成に使えます。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  deepl: {
+    name: "DeepL",
+    url: "https://www.deepl.com",
+    pricing: "freemium",
+    paidPlan: { name: "Individual", amount: 7.49, currency: "EUR" },
+    freeTier: l(
+      "무료 버전은 한 달에 글자 50,000자, 파일 1개까지 번역할 수 있어요.",
+      "The free version translates up to 50,000 characters and 1 file a month.",
+      "無料版では月に50,000文字、ファイル1件まで翻訳できます。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어와 일본어 번역을 지원해요.",
+      "Translates Korean and Japanese.",
+      "韓国語と日本語の翻訳に対応しています。",
+    ),
+    description: l(
+      "문장과 문서 파일을 번역해 주는 AI 번역 서비스예요.",
+      "An AI translation service for text and document files.",
+      "文章や文書ファイルを翻訳するAI翻訳サービスです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  grammarly: {
+    name: "Grammarly",
+    url: "https://www.grammarly.com",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 12, currency: "USD" },
+    freeTier: l(
+      "무료 요금제에서 맞춤법과 문법을 고칠 수 있어요.",
+      "The free plan fixes spelling and grammar.",
+      "無料プランでスペルや文法を修正できます。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어와 일본어 글쓰기 제안, 무료 웹 번역기를 지원해요.",
+      "Offers writing suggestions in Korean and Japanese, plus a free web translator.",
+      "韓国語・日本語の文章提案と無料のウェブ翻訳に対応しています。",
+    ),
+    description: l(
+      "쓴 글의 맞춤법, 문법, 표현을 다듬어 주는 글쓰기 도우미예요.",
+      "A writing assistant that polishes spelling, grammar, and phrasing.",
+      "書いた文章のスペルや文法、表現を整えるライティング支援ツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  canva: {
+    name: "Canva",
+    url: "https://www.canva.com",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 18, currency: "USD" },
+    freeTier: l(
+      "무료 템플릿과 월 최대 20회의 AI 사용이 포함돼요.",
+      "Includes free templates and up to 20 AI uses a month.",
+      "無料テンプレートと月最大20回のAI利用が含まれます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "템플릿을 골라 끌어다 놓기로 디자인하고 AI 기능도 쓸 수 있는 디자인 도구예요.",
+      "A drag-and-drop design tool built around templates, with AI features included.",
+      "テンプレートを選んでドラッグ&ドロップでデザインでき、AI機能も使えるツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  midjourney: {
+    name: "Midjourney",
+    url: "https://www.midjourney.com",
+    pricing: "paid",
+    paidPlan: { name: "Basic", amount: 10, currency: "USD" },
+    freeTier: l(
+      "공식 사이트에서는 무료 체험을 제공하지 않아요.",
+      "No free trial on the official site.",
+      "公式サイトでは無料トライアルを提供していません。",
+    ),
+    difficulty: "medium",
+    description: l(
+      "글로 설명하면 분위기 있는 이미지를 만들어 주는 이미지 생성 AI예요.",
+      "An image generator that turns a written description into atmospheric artwork.",
+      "文章で説明すると雰囲気のある画像を作る画像生成AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  firefly: {
+    name: "Adobe Firefly",
+    url: "https://firefly.adobe.com",
+    pricing: "freemium",
+    paidPlan: { name: "Standard", amount: 9.99, currency: "USD" },
+    freeTier: l(
+      "매일 정해진 횟수만큼 무료로 생성할 수 있어요.",
+      "Includes a limited number of free generations each day.",
+      "毎日決まった回数まで無料で生成できます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "Adobe가 만든 이미지·영상 생성 AI예요.",
+      "Adobe's AI for generating images and video.",
+      "Adobeが提供する画像・動画生成AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  ideogram: {
+    name: "Ideogram",
+    url: "https://ideogram.ai",
+    pricing: "freemium",
+    freeTier: l(
+      "무료로 쓸 수 있는 크레딧을 매주 받아요.",
+      "Free accounts get weekly credits.",
+      "無料アカウントには毎週クレジットが付与されます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "글자가 들어간 이미지를 만들 때 쓰기 좋은 이미지 생성 AI예요.",
+      "An image generator that suits images with text in them.",
+      "文字入りの画像を作るのに向いた画像生成AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  photoroom: {
+    name: "Photoroom",
+    url: "https://www.photoroom.com",
+    pricing: "paid",
+    freeTier: l(
+      "유료 요금제를 무료로 체험할 수 있어요.",
+      "Paid plans come with a free trial.",
+      "有料プランを無料で試せます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "제품 사진의 배경을 지우고 판매용 이미지로 다듬어 주는 도구예요.",
+      "A tool that removes backgrounds and turns product photos into sales-ready images.",
+      "商品写真の背景を消し、販売用の画像に仕上げるツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  capcut: {
+    name: "CapCut",
+    url: "https://www.capcut.com",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 19.99, currency: "USD" },
+    freeTier: l(
+      "무료 버전이 있어요. 자동 자막의 무료 제공 여부는 공식 안내마다 달라서 직접 확인해 보세요.",
+      "Has a free version. Official pages differ on whether auto captions are free, so try it yourself.",
+      "無料版があります。自動字幕が無料かどうかは公式の案内によって異なるため、実際にお試しください。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "AI 기능을 갖춘 영상 편집 앱으로, 웹·PC·모바일에서 쓸 수 있어요.",
+      "A video editor with AI features that runs on web, desktop, and mobile.",
+      "AI機能を備えた動画編集アプリで、ウェブ・PC・モバイルで使えます。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  runway: {
+    name: "Runway",
+    url: "https://runway.com",
+    pricing: "freemium",
+    paidPlan: { name: "Standard", amount: 15, currency: "USD" },
+    freeTier: l(
+      "무료 요금제에 1회성 크레딧 125개가 제공돼요.",
+      "The free plan comes with 125 one-time credits.",
+      "無料プランには1回限りの125クレジットが付きます。",
+    ),
+    difficulty: "medium",
+    description: l(
+      "글이나 이미지로 짧은 영상을 만드는 영상 생성 AI예요.",
+      "A video generator that creates short clips from text or images.",
+      "テキストや画像から短い動画を作る動画生成AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  vrew: {
+    name: "Vrew",
+    url: "https://vrew.ai",
+    pricing: "freemium",
+    freeTier: l("무료 요금제가 있어요.", "Has a free plan.", "無料プランがあります。"),
+    difficulty: "easy",
+    description: l(
+      "자동 자막을 넣고, 문서를 고치듯 영상을 편집하는 도구예요.",
+      "Adds auto captions and lets you edit video the way you edit a document.",
+      "自動字幕を付け、文書を直すように動画を編集できるツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  heygen: {
+    name: "HeyGen",
+    url: "https://www.heygen.com",
+    pricing: "freemium",
+    paidPlan: { name: "Creator", amount: 29, currency: "USD" },
+    freeTier: l(
+      "무료 요금제로 한 달에 영상 3개를 만들 수 있어요.",
+      "The free plan makes 3 videos a month.",
+      "無料プランでは月に3本の動画を作成できます。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어와 일본어 음성, 영상 번역을 지원해요.",
+      "Supports Korean and Japanese voices and video translation.",
+      "韓国語・日本語の音声と動画翻訳に対応しています。",
+    ),
+    description: l(
+      "대본을 넣으면 AI 아바타가 말하는 영상을 만들어 주고 영상 번역도 할 수 있어요.",
+      "Turns a script into a video of an AI avatar speaking, and translates videos too.",
+      "台本からAIアバターが話す動画を作成でき、動画の翻訳もできます。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  descript: {
+    name: "Descript",
+    url: "https://www.descript.com",
+    pricing: "freemium",
+    paidPlan: { name: "Hobbyist", amount: 24, currency: "USD" },
+    freeTier: l(
+      "무료 요금제로 녹화, 편집, 믹싱을 할 수 있어요.",
+      "The free plan covers recording, editing, and mixing.",
+      "無料プランで録画、編集、ミキシングができます。",
+    ),
+    difficulty: "medium",
+    description: l(
+      "대본 글자를 고치면 영상과 음성이 함께 편집되는 도구예요.",
+      "Edits video and audio as you edit the transcript text.",
+      "文字起こしのテキストを直すと動画と音声も編集されるツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  synthesia: {
+    name: "Synthesia",
+    url: "https://www.synthesia.io",
+    pricing: "freemium",
+    paidPlan: { name: "Starter", amount: 19, currency: "USD" },
+    freeTier: l(
+      "무료 Basic 요금제에 월 500 크레딧이 제공돼요.",
+      "The free Basic plan includes 500 credits a month.",
+      "無料のBasicプランには月500クレジットが付きます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "AI 진행자가 등장하는 교육·안내 영상을 만드는 도구예요.",
+      "Creates training and explainer videos fronted by an AI presenter.",
+      "AIプレゼンターが登場する研修・説明動画を作るツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  suno: {
+    name: "Suno",
+    url: "https://suno.com",
+    pricing: "freemium",
+    paidPlan: { name: "Pro", amount: 10, currency: "USD" },
+    freeTier: l("무료 요금제가 있어요.", "Has a free plan.", "無料プランがあります。"),
+    difficulty: "easy",
+    description: l(
+      "원하는 분위기를 글로 적으면 노래를 만들어 주는 음악 생성 AI예요.",
+      "A music generator that makes a song from a written description.",
+      "雰囲気を文章で伝えると曲を作ってくれる音楽生成AIです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  elevenlabs: {
+    name: "ElevenLabs",
+    url: "https://elevenlabs.io",
+    pricing: "freemium",
+    paidPlan: { name: "Starter", amount: 6, currency: "USD" },
+    freeTier: l(
+      "무료 요금제에 월 10,000 크레딧이 제공돼요.",
+      "The free plan includes 10,000 credits a month.",
+      "無料プランには月10,000クレジットが付きます。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어와 일본어 음성을 지원해요(모델에 따라 달라요).",
+      "Supports Korean and Japanese speech, depending on the model.",
+      "韓国語と日本語の音声に対応しています(モデルにより異なります)。",
+    ),
+    description: l(
+      "글을 자연스러운 음성으로 읽어 주는 AI 음성 도구예요.",
+      "An AI voice tool that reads text aloud in natural-sounding speech.",
+      "テキストを自然な音声で読み上げるAI音声ツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  typecast: {
+    name: "Typecast",
+    url: "https://typecast.ai",
+    pricing: "freemium",
+    paidPlan: { name: "Basic", amount: 5, currency: "USD" },
+    freeTier: l(
+      "무료 요금제로 음성을 만들고 들어볼 수 있어요. 내려받을 때 크레딧이 차감돼요.",
+      "Generate and preview voices for free. Credits are used only when you download.",
+      "無料プランで音声の生成と試聴ができます。ダウンロード時にクレジットを消費します。",
+    ),
+    difficulty: "easy",
+    languageNote: l(
+      "한국어, 일본어, 영어 음성을 지원해요.",
+      "Supports Korean, Japanese, and English voices.",
+      "韓国語、日本語、英語の音声に対応しています。",
+    ),
+    description: l(
+      "다양한 AI 성우 목소리로 영상 내레이션을 만드는 도구예요.",
+      "Creates narration for videos using a range of AI voice actors.",
+      "さまざまなAI声優の声で動画ナレーションを作るツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  gamma: {
+    name: "Gamma",
+    url: "https://gamma.app",
+    pricing: "freemium",
+    freeTier: l("무료 요금제가 있어요.", "Has a free plan.", "無料プランがあります。"),
+    difficulty: "easy",
+    description: l(
+      "주제를 입력하면 발표 자료 초안을 만들어 주는 도구예요.",
+      "Turns a topic you type into a first draft of a presentation.",
+      "テーマを入力するとプレゼン資料の下書きを作るツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  "gemini-notebook": {
+    name: "Gemini Notebook",
+    url: "https://notebook.google",
+    pricing: "freemium",
+    freeTier: l(
+      "무료로 노트당 자료를 최대 50개까지 넣을 수 있어요.",
+      "Free accounts can add up to 50 sources per notebook.",
+      "無料でノートブックごとに最大50件のソースを追加できます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "NotebookLM의 새 이름이에요. 내 자료를 넣으면 그 내용을 바탕으로 요약하고 답해줘요.",
+      "The new name for NotebookLM. Add your own sources and it summarizes and answers from them.",
+      "NotebookLMの新しい名称です。自分の資料を追加すると、その内容をもとに要約や回答をします。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  copilot: {
+    name: "Microsoft Copilot",
+    url: "https://copilot.microsoft.com",
+    pricing: "freemium",
+    paidPlan: { name: "Microsoft 365 Personal", amount: 9.99, currency: "USD" },
+    freeTier: l(
+      "무료로 쓸 수 있지만 Office 앱 안에서 쓰려면 유료 구독이 필요해요.",
+      "Free to use, but working inside Office apps needs a paid subscription.",
+      "無料で使えますが、Officeアプリ内で使うには有料サブスクリプションが必要です。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "Word, Excel, PowerPoint와 함께 쓸 수 있는 Microsoft의 AI 비서예요.",
+      "Microsoft's AI assistant, which works alongside Word, Excel, and PowerPoint.",
+      "Word、Excel、PowerPointと一緒に使えるMicrosoftのAIアシスタントです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+  julius: {
+    name: "Julius",
+    url: "https://julius.ai",
+    pricing: "freemium",
+    freeTier: l(
+      "무료 요금제에 매일 크레딧이 제공돼요.",
+      "The free plan includes daily credits.",
+      "無料プランには毎日クレジットが付与されます。",
+    ),
+    difficulty: "easy",
+    description: l(
+      "데이터 파일을 올리고 말로 물어보면 분석하고 차트를 그려주는 도구예요.",
+      "Upload a data file, ask in plain words, and it runs the analysis and draws charts.",
+      "データファイルをアップロードして言葉で尋ねると、分析してグラフを作るツールです。",
+    ),
+    lastVerified: VERIFIED,
+  },
+} satisfies Record<string, Tool>;
+
+export type ToolSlug = keyof typeof tools;
+
+export const toolSlugs = Object.keys(tools) as ToolSlug[];
+
+export function hasTool(slug: string): slug is ToolSlug {
+  return Object.hasOwn(tools, slug);
+}
